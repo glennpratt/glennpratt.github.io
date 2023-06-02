@@ -1,0 +1,58 @@
+---
+import { getCollection } from "astro:content";
+import { Picture } from "@astrojs/image/components";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+
+// Filter photos entries with 'draft: false' & date before current date
+const publishedPhotoAlbums = await getCollection("photos", ({ data }) => {
+  return !data.draft && data.publishDate < new Date();
+});
+---
+
+<Layout title="Photos">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Photos</Fragment>
+      <Fragment slot="desc">
+      </Fragment>
+    </Sectionhead>
+
+    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+      <h2 class="font-bold text-3xl text-gray-800">
+      </h2>
+      <p class="text-lg leading-relaxed text-slate-500">
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
+      {
+        publishedPhotoAlbums.map((photoAlbumEntry) => (
+          <a href={photoAlbumEntry.data.link}>
+            <div class="group">
+              <div class="w-full aspect-square">
+                <Picture
+                  src={photoAlbumEntry.data.highlight.src}
+                  alt={photoAlbumEntry.data.highlight.alt}
+                  sizes="(max-width: 800px) 100vw, 400px"
+                  widths={[200, 400]}
+                  aspectRatio="3:2"
+                  background="#ffffff"
+                  fit="cover"
+                  position="center"
+                  class="w-full rounded-md rounded transition group-hover:-translate-y-1 group-hover:shadow-xl"
+                />
+              </div>
+
+              <div class="mt-4 text-center">
+                <h2 class="text-lg text-gray-800">
+                  {photoAlbumEntry.data.title}
+                </h2>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </Container>
+</Layout>
