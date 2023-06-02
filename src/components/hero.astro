@@ -8,16 +8,21 @@ import { Icon } from "astro-icon";
 <main
   class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
   <div class="py-6 md:order-1 md:block">
-    <Picture
-      src={heroImage}
-      alt="Dadstronaut in space"
-      widths={[600, 400, 200]}
-      {/* sizes="(max-width: 800px) 100vw, 620px, "*/}
-      sizes="((min-width: 50em) and (max-width: 60em)) 50em, ((min-width: 30em) and (max-width: 50em)) 30em, (max-width: 30em) 20em"
-      aspectRatio=23:25
-      loading="eager"
-      format="avif"
-    />
+    <figure>
+      <Picture
+        src={heroImage}
+        alt="Dadstronaut in space"
+        widths={[600, 400, 200]}
+        {/* sizes="(max-width: 800px) 100vw, 620px, "*/}
+        sizes="((min-width: 50em) and (max-width: 60em)) 50em, ((min-width: 30em) and (max-width: 50em)) 30em, (max-width: 30em) 20em"
+        aspectRatio=23:25
+        loading="eager"
+        format="avif"
+      />
+      <figcaption>
+        <p><sup>Art by one of my children</sup></p>
+      </figcaption>
+    </figure>
   </div>
   <div>
     <h1
