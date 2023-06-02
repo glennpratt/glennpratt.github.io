@@ -3,6 +3,7 @@ import Container from "@components/container.astro";
 import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+import { Icon } from "astro-icon";
 
 const menuitems = [
   {
@@ -59,16 +60,54 @@ const menuitems = [
             ))
           }
         </ul>
-        <!--<div class="lg:hidden flex items-center mt-3 gap-4">
-          <Link href="#" style="muted" block size="md">Log in</Link>
-          <Link href="#" size="md" block>Sign up</Link>
-        </div>-->
+        <div class="lg:hidden flex items-center mt-3 gap-4">
+          <Link
+            href="https://github.com/glennpratt"
+            size="md"
+            style="outline"
+            rel="noopener"
+            href="https://www.linkedin.com/in/glennpratt/"
+            class="flex gap-1 items-center justify-center"
+            target="_blank">
+            <Icon class="text-black w-4 h-4" name="bx:bxl-github" />GitHub
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/glennpratt/"
+            size="md"
+            style="outline"
+            rel="noopener"
+            href="https://www.linkedin.com/in/glennpratt/"
+            class="flex gap-1 items-center justify-center"
+            target="_blank">
+            <Icon class="text-black w-4 h-4" name="bx:bxl-linkedin" />LinkedIn
+          </Link>
+        </div>
       </MenuItems>
     </Astronav>
     <div>
       <div class="hidden lg:flex items-center gap-4">
-        <!--<a href="#">Log in</a>
-        <Link href="#" size="md">Sign up</Link>-->
+        {Astro.url.pathname != "/" &&
+          <Link
+            href="https://github.com/glennpratt"
+            size="md"
+            style="outline"
+            rel="noopener"
+            href="https://www.linkedin.com/in/glennpratt/"
+            class="flex gap-1 items-center justify-center"
+            target="_blank">
+            <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/glennpratt/"
+            size="md"
+            style="outline"
+            rel="noopener"
+            href="https://www.linkedin.com/in/glennpratt/"
+            class="flex gap-1 items-center justify-center"
+            target="_blank">
+            <Icon class="text-black w-4 h-4" name="bx:bxl-linkedin" />
+          </Link>
+        }
       </div>
     </div>
   </header>
